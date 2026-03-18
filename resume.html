@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Chacon – Resume</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10.5pt; color: #1a1a1a; background: #fff; line-height: 1.45; }
+  .page { max-width: 780px; margin: 0 auto; padding: 36px 44px; }
+  h1 { font-size: 22pt; font-weight: 700; color: #0F2D57; letter-spacing: -0.3px; }
+  .tagline { font-size: 10.5pt; color: #1B5FA8; font-weight: 600; margin: 2px 0 6px; }
+  .contact { font-size: 9.5pt; color: #444; display: flex; flex-wrap: wrap; gap: 0 16px; }
+  .contact span::before { content: ''; }
+  hr.thin { border: none; border-top: 1.5px solid #0F2D57; margin: 10px 0 8px; }
+  hr.light { border: none; border-top: 0.5px solid #ccc; margin: 7px 0; }
+  h2 { font-size: 10pt; font-weight: 700; color: #0F2D57; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .summary { font-size: 10.5pt; color: #222; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+  .skill-row { font-size: 9.8pt; }
+  .skill-label { font-weight: 600; color: #0F2D57; }
+  .job { margin-bottom: 10px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 10.5pt; color: #1a1a1a; }
+  .job-company { font-weight: 600; font-size: 10pt; color: #1B5FA8; }
+  .job-meta { font-size: 9pt; color: #666; text-align: right; white-space: nowrap; }
+  ul.bullets { margin: 4px 0 0 14px; }
+  ul.bullets li { font-size: 10pt; color: #222; margin-bottom: 2.5px; }
+  .edu-row { display: flex; justify-content: space-between; }
+  .edu-school { font-weight: 700; font-size: 10pt; }
+  .edu-degree { font-size: 9.8pt; color: #444; }
+  .edu-date { font-size: 9pt; color: #666; white-space: nowrap; }
+  .cert-row { font-size: 10pt; }
+  .cert-name { font-weight: 600; }
+  .section { margin-bottom: 12px; }
+  @media print {
+    body { font-size: 10pt; }
+    .page { padding: 20px 28px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <h1>Eduardo Chacon</h1>
+  <div class="tagline">Senior Azure Databricks Engineer &nbsp;|&nbsp; Big Data &amp; Cloud Data Engineering</div>
+  <div class="contact">
+    <span>Bogotá, Colombia</span>
+    <span>LinkedIn: linkedin.com/in/ed-chacon</span>
+    <span>Languages: English (Full Professional) · Spanish (Native)</span>
+  </div>
+  <hr class="thin">
+
+  <!-- Summary -->
+  <div class="section">
+    <h2>Professional Summary</h2>
+    <p class="summary">Senior Data Engineer with 5+ years of hands-on experience designing, developing, and deploying scalable cloud data pipelines on <strong>Azure Databricks</strong> and the broader Azure ecosystem. Deep proficiency in <strong>Apache Spark / PySpark</strong>, Delta Lake, <strong>DBT</strong>, Azure Data Factory, and SQL-based data modelling. Proven track record delivering production-grade ETL pipelines, data quality frameworks, and OLAP-ready warehouses. Known for proactivity, strong self-management, and an ability to translate complex user requirements into high-quality data products. Certified in <strong>Data Analysis with Databricks</strong> (2024).</p>
+  </div>
+
+  <!-- Core Skills -->
+  <div class="section">
+    <h2>Core Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">Cloud / Lakehouse:</span> Azure Databricks, Azure Data Lake, Delta Lake, Azure SQL, Elastic Pools, Azure Data Factory</div>
+      <div class="skill-row"><span class="skill-label">Big Data Frameworks:</span> Apache Spark, PySpark, SparkSQL, SSIS, ODI</div>
+      <div class="skill-row"><span class="skill-label">Data Transformation:</span> DBT, SQL, PL/SQL, T-SQL, Python</div>
+      <div class="skill-row"><span class="skill-label">Data Quality &amp; Modeling:</span> Delta Lake ACID, OLAP modeling, Data Governance, schema design</div>
+      <div class="skill-row"><span class="skill-label">Orchestration:</span> Apache Airflow, Azure Data Factory pipelines, Python-scripted orchestration</div>
+      <div class="skill-row"><span class="skill-label">BI &amp; Analytics:</span> Power BI (Reports, Dashboards, Paginated, Apps), Tableau</div>
+      <div class="skill-row"><span class="skill-label">Additional:</span> R, web/data scraping, Azure SQL Elastic Pools, Microsoft SQL Server</div>
+      <div class="skill-row"><span class="skill-label">Soft Skills:</span> Technical leadership, stakeholder communication, team coordination</div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <h2>Professional Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Senior Big Data Engineer</div>
+          <div class="job-company">SoftServe Business Systems &nbsp;·&nbsp; Full-time · Remote</div>
+        </div>
+        <div class="job-meta">Sep 2024 – Present<br>Bogotá, Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Architect and develop end-to-end <strong>Azure Databricks</strong> data pipelines processing large-scale datasets using <strong>PySpark and SparkSQL</strong>, ensuring reliability and performance at scale.</li>
+        <li>Drive OLAP data modelling strategies for storage, exploration, and consumption layers, enabling self-service analytics via Tableau.</li>
+        <li>Implement comprehensive <strong>data quality evaluation</strong> frameworks using PySpark, enforcing business rules and SLA compliance across pipelines.</li>
+        <li>Spearhead data transformations and Delta Lake optimisations (Z-ordering, vacuuming, compaction) to maintain pipeline efficiency.</li>
+        <li>Recognised multiple times for proactive delivery and high-quality self-managed output on complex data products.</li>
+        <li><em>Key skills: Azure Databricks · Apache Spark · PySpark · SparkSQL · Delta Lake · Tableau · DBT</em></li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Senior Data Engineer</div>
+          <div class="job-company">Tunjo Solutions &nbsp;·&nbsp; Full-time · Remote</div>
+        </div>
+        <div class="job-meta">Dec 2021 – Jan 2025 (3 yrs 2 mos)<br>Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Designed, developed, and deployed Power BI reports, dashboards, paginated reports, and embedded apps for diverse client environments; presented dashboards to senior stakeholders.</li>
+        <li>Orchestrated and developed <strong>Azure Data Factory</strong> pipelines integrated with <strong>Azure SQL</strong> to automate ingestion and transformation workflows.</li>
+        <li>Performed web scraping and document data extraction using <strong>Python</strong> for unstructured data ingestion.</li>
+        <li>Led and coordinated a team of temporary development contractors, providing technical guidance and code review.</li>
+        <li><em>Key skills: Azure Data Factory · Azure SQL · Power BI · Python · Data Loading</em></li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Data Tribe Leader</div>
+          <div class="job-company">Mibanco, banco de la Microempresa &nbsp;·&nbsp; Full-time · Hybrid</div>
+        </div>
+        <div class="job-meta">Dec 2022 – Apr 2023 (5 mos)<br>Bogotá, Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Led a team of 12 developers in migrating on-premises Sandbox databases to structured Azure Cloud exploration warehouses, aligned to the company's cloud strategy.</li>
+        <li>Hands-on use of <strong>Python, PL/SQL, and Power BI</strong> throughout the migration; pipelines orchestrated through ODI.</li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Data Engineering Manager</div>
+          <div class="job-company">Teleperformance &nbsp;·&nbsp; Full-time · Remote</div>
+        </div>
+        <div class="job-meta">Feb 2020 – Dec 2021 (1 yr 11 mos)<br>Medellín, Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Designed and implemented a <strong>SQL Server on-premises Data Warehouse</strong> architecture with Python- and T-SQL-orchestrated pipelines; data ingestion via SSIS.</li>
+        <li>Consolidated reporting across the organisation by deploying a Microsoft on-premises BI architecture extended to Azure SQL Elastic Pools; created and maintained 100+ Power BI dashboards with proper Data Governance.</li>
+        <li>Performed web and data scraping in <strong>Python and R</strong>; provided hands-on technical leadership across engineering teams.</li>
+        <li><em>Key skills: SQL Server · Power BI · Python · R · Azure SQL · SSIS · Data Governance</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <h2>Education</h2>
+    <div class="edu-row" style="margin-bottom:5px;">
+      <div>
+        <div class="edu-school">Duke University – Pratt School of Engineering</div>
+        <div class="edu-degree">Specialization in Analytics Tools for Business &amp; Data Processing</div>
+      </div>
+      <div class="edu-date">Mar 2018 – Aug 2019</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">Colombian Army, School of Logistics</div>
+        <div class="edu-degree">Bachelor's Degree – Logistics, Materials &amp; Supply Chain Management (Professional in Logistics Management)</div>
+      </div>
+      <div class="edu-date">Jul 2007 – Oct 2013</div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section">
+    <h2>Licenses &amp; Certifications</h2>
+    <div class="cert-row"><span class="cert-name">Data Analysis with Databricks</span> &nbsp;–&nbsp; Databricks &nbsp;·&nbsp; Issued March 2024</div>
+  </div>
+
+</div>
+</body>
+</html>
