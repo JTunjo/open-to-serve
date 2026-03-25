@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tunjo Smart Solutions — Team Profiles</title>
+<style>
+  :root {
+    --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-200: #5DCAA5;
+    --teal-600: #0F6E56; --teal-800: #085041; --teal-900: #04342C;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
+    --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f8f7f4;
+    color: #2c2c2a;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .page-header {
+    background: var(--teal-900);
+    color: var(--teal-100);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .page-header h1 { font-size: 22px; font-weight: 500; letter-spacing: 0.03em; color: #fff; }
+  .page-header p { font-size: 13px; color: var(--teal-200); margin-top: 4px; font-style: italic; }
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--gray-100);
+    padding: 0 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .nav-tab {
+    padding: 14px 24px;
+    font-size: 13px;
+    font-family: -apple-system, sans-serif;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--gray-600);
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .nav-tab.active { color: var(--teal-600); border-bottom-color: var(--teal-600); font-weight: 500; }
+  .nav-tab:hover:not(.active) { color: var(--gray-800); }
+  .profile { display: none; max-width: 860px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+  .profile.active { display: block; }
+  .profile-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .photo-slot {
+    width: 140px;
+    height: 175px;
+    background: var(--gray-50);
+    border: 1px dashed var(--gray-200);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .photo-slot input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .photo-slot img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: 6px; }
+  .photo-icon { font-size: 28px; color: var(--gray-200); pointer-events: none; }
+  .photo-hint { font-size: 11px; color: var(--gray-400); font-family: -apple-system, sans-serif; pointer-events: none; text-align: center; line-height: 1.4; }
+  .profile-meta h2 {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--teal-900);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .profile-meta .role {
+    font-size: 14px;
+    font-family: -apple-system, sans-serif;
+    color: var(--teal-600);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .profile-meta .tagline {
+    font-size: 14.5px;
+    color: var(--gray-600);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  .section { margin-bottom: 2rem; }
+  .section-label {
+    font-size: 10px;
+    font-family: -apple-system, sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal-600);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--teal-50);
+  }
+  .section p { margin-bottom: 0.8em; color: #3a3a38; font-size: 14.5px; }
+  .section p:last-child { margin-bottom: 0; }
+  .credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .credential-tag {
+    font-size: 12px;
+    font-family: -apple-system, sans-serif;
+    background: var(--teal-50);
+    color: var(--teal-800);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--teal-100);
+    line-height: 1.4;
+  }
+  .print-btn {
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-600);
+    padding: 7px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .print-btn:hover { background: var(--gray-50); color: var(--gray-800); }
+  .print-btn svg { width: 13px; height: 13px; }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+
+  @media print {
+    body { background: #fff; }
+    .nav-tabs, .page-header, .print-btn, .header-actions, .photo-slot input { display: none !important; }
+    .profile { display: none !important; padding: 0; }
+    .profile.print-target { display: block !important; }
+    .photo-slot { border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <h1>Tunjo Smart Solutions</h1>
+    <p>Team Profiles — Grant Application</p>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showProfile('aura')">Aura Chacón</button>
+  <button class="nav-tab" onclick="showProfile('javier')">Javier Chacón</button>
+  <button class="nav-tab" onclick="showProfile('fabian')">Fabián Chacón</button>
+</div>
+
+<!-- AURA -->
+<div class="profile active" id="profile-aura">
+  <div style="display:flex; justify-content:flex-end; margin-bottom:1.5rem;">
+    <button class="print-btn" onclick="printProfile('aura')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="7" rx="1"/><path d="M3 8H1v6h14V8h-2"/><rect x="4" y="10" width="8" height="4"/></svg>
+      Print this profile
+    </button>
+  </div>
+  <div class="profile-header">
+    <div class="photo-slot" id="photo-aura" title="Click to upload photo">
+      <input type="file" accept="image/*" onchange="loadPhoto('aura', this)">
+      <div class="photo-icon">&#9786;</div>
+      <div class="photo-hint">Click to<br>upload photo</div>
+    </div>
+    <div class="profile-meta">
+      <div class="role">Founder &amp; Chief Executive Officer</div>
+      <h2>Aura Chacón</h2>
+      <p class="tagline">Agritech entrepreneur bridging rural producers and global markets through data-driven technology and 11 years of international trade experience.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Professional Overview</div>
+    <p>Aura Chacón is an agritech entrepreneur focused on closing the gap between rural producers and global markets through data-driven technologies. With over 11 years of experience across international trade, agricultural commercialization, and business development, she has built a career connecting on-the-ground realities in rural territories with scalable, technology-enabled solutions.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Leadership at Tunjo Smart Solutions</div>
+    <p>As Founder and CEO, Aura leads the company's strategic direction, commercial growth, and high-level partnerships. Under her leadership, Tunjo has developed and deployed technologies that integrate traceability, controlled fermentation, and real-time agricultural data systems — enabling producers to improve quality, access premium markets, and comply with international standards.</p>
+    <p>She has driven the company's expansion into Colombia, Peru, and the Philippines, and has led over 100 project implementations impacting more than 50 producers across different agricultural sectors.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Strategic Partnerships &amp; Recognition</div>
+    <p>Aura has been instrumental in establishing collaborations with leading institutions including the Alexander von Humboldt Biological Resources Research Institute, the Bogotá Chamber of Commerce, the Food and Agriculture Organization (FAO), and Universidad de los Andes. These partnerships have focused on technology transfer, agricultural innovation, and applied research, including metabolomics studies in specialty coffee.</p>
+    <p>She was selected to participate in a FAO-led AgTech Bootcamp and to present Tunjo's solutions at the AgTech Summit 2026, positioning her work within the global innovation ecosystem.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">International Market Experience</div>
+    <p>Her international career includes managing export operations and commercial relationships across Europe and the United States, with direct market-opening roles in the Netherlands, Germany, France, Spain, and the United States. She also contributed to pioneering Colombian exotic fruit exports to new destinations, including Azerbaijan.</p>
+    <p>Prior to founding Tunjo, Aura held leadership roles at Frutas Comerciales S.A., where she managed international client portfolios, coordinated perishable export logistics, and supported market expansion strategies.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Entrepreneurial Ventures</div>
+    <p>Beyond Tunjo, Aura founded Velvet Greens, an enterprise focused on the commercialization of specialty agricultural products and international market development, and Tihikí, an agroecological tourism venture connecting rural service providers in Colombia's Valle de Tenza. Her work consistently reflects a commitment to practical, scalable impact for rural communities.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Education &amp; Credentials</div>
+    <div class="credentials">
+      <span class="credential-tag">B.Sc. International Business — Fundación Universitaria Compensar</span>
+      <span class="credential-tag">Academy for Women Entrepreneurs (AWE) — U.S. Government Initiative</span>
+      <span class="credential-tag">FAO AgTech Bootcamp Participant</span>
+    </div>
+  </div>
+</div>
+
+<!-- JAVIER -->
+<div class="profile" id="profile-javier">
+  <div style="display:flex; justify-content:flex-end; margin-bottom:1.5rem;">
+    <button class="print-btn" onclick="printProfile('javier')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="7" rx="1"/><path d="M3 8H1v6h14V8h-2"/><rect x="4" y="10" width="8" height="4"/></svg>
+      Print this profile
+    </button>
+  </div>
+  <div class="profile-header">
+    <div class="photo-slot" id="photo-javier" title="Click to upload photo">
+      <input type="file" accept="image/*" onchange="loadPhoto('javier', this)">
+      <div class="photo-icon">&#9786;</div>
+      <div class="photo-hint">Click to<br>upload photo</div>
+    </div>
+    <div class="profile-meta">
+      <div class="role">Head of Operations &amp; Chief of Data</div>
+      <h2>Javier Chacón</h2>
+      <p class="tagline">Data and operations leader with 17 years of experience scaling analytics-driven organizations, now transforming agricultural systems through AI and data engineering.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Professional Overview</div>
+    <p>Javier Chacón is a data and operations leader with over 17 years of experience building and scaling analytics-driven organizations across agriculture, supply chains, and global service operations. His work sits at the intersection of data engineering, artificial intelligence, and operational strategy, with a strong focus on transforming complex systems into measurable, high-impact outcomes.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Role at Tunjo Smart Solutions</div>
+    <p>At Tunjo, Javier leads the company's operational strategy and data architecture — defining what is built, how it is deployed, and how data is transformed into actionable intelligence. He is responsible for end-to-end data systems including real-time data capture, pipeline orchestration, governance frameworks, and AI-driven analysis, ensuring that Tunjo's technologies move beyond monitoring into prediction, optimization, and decision support for producers.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Research &amp; Development</div>
+    <p>Javier plays a central role in developing Tunjo's bioreactor systems for controlled coffee fermentation. He designed the data architecture enabling high-frequency data acquisition and processing, and leads the R&amp;D of fermentation protocols by integrating field data with analytical and laboratory insights. His work includes data profiling, model development, and prescriptive frameworks that allow producers to consistently achieve higher quality outcomes, translating raw data into repeatable recipes and scalable production methodologies.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Prior Executive Experience</div>
+    <p>Before joining Tunjo, Javier held senior executive roles at Teleperformance, serving as Vice President of Reporting and Operational Analytics, and as Chief Data Officer for multiple Latin American countries. In these roles, he led data organizations of up to 1,500 professionals across several geographies, overseeing data strategy, governance, and analytics enablement for complex, real-time operations — with a focus on workforce planning optimization and data-driven decision-making at scale.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Technical Expertise</div>
+    <p>Throughout his career, Javier has designed and implemented data governance frameworks, engineering pipelines, and advanced analytics solutions using tools such as SQL, Python, R, and modern BI platforms. He has extensive experience in both batch and real-time data processing environments, as well as in machine learning applications for prediction and optimization.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Education &amp; Credentials</div>
+    <div class="credentials">
+      <span class="credential-tag">M.Sc. Information Technology, Data Management &amp; Technological Innovation — University of Barcelona</span>
+      <span class="credential-tag">B.Sc. Logistics Administration</span>
+      <span class="credential-tag">Executive Education, Strategic Decision-Making — INALDE Business School</span>
+      <span class="credential-tag">Advanced Training, Metabolomics in Specialty Coffee — Universidad de los Andes</span>
+    </div>
+  </div>
+</div>
+
+<!-- FABIÁN -->
+<div class="profile" id="profile-fabian">
+  <div style="display:flex; justify-content:flex-end; margin-bottom:1.5rem;">
+    <button class="print-btn" onclick="printProfile('fabian')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="7" rx="1"/><path d="M3 8H1v6h14V8h-2"/><rect x="4" y="10" width="8" height="4"/></svg>
+      Print this profile
+    </button>
+  </div>
+  <div class="profile-header">
+    <div class="photo-slot" id="photo-fabian" title="Click to upload photo">
+      <input type="file" accept="image/*" onchange="loadPhoto('fabian', this)">
+      <div class="photo-icon">&#9786;</div>
+      <div class="photo-hint">Click to<br>upload photo</div>
+    </div>
+    <div class="profile-meta">
+      <div class="role">Head of Technology</div>
+      <h2>Fabián Chacón</h2>
+      <p class="tagline">Electronics engineer and technology leader with 7+ years designing and deploying integrated hardware-software systems for real-world agricultural environments.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Professional Overview</div>
+    <p>Fabián Chacón is an electronics engineer and technology leader with over seven years of experience designing and deploying integrated hardware and software systems for the agricultural sector. His work focuses on building end-to-end digital infrastructure that enables real-time data capture, process automation, and farm-level decision-making.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Role at Tunjo Smart Solutions</div>
+    <p>As Head of Technology, Fabián leads the architecture, development, and deployment of Tunjo's core technology stack, spanning IoT hardware, embedded systems, cloud infrastructure, and web-based applications. He has delivered multiple production-ready platforms currently active in the field, supporting agricultural operations with measurable impact.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Key Developments &amp; Impact</div>
+    <p>His portfolio of deployments includes a blockchain-based traceability platform for agricultural products enabling transparent and verifiable commercial flows; a task and cost management system with integrated data pipelines for sugarcane producers; and a simplified inventory control platform designed to reduce waste among agricultural distributors.</p>
+    <p>One of his most significant achievements is a fully integrated data system for sugarcane operations — encompassing data acquisition, backend services, databases, and user-facing applications — that enabled a measurable 17% reduction in water usage, demonstrating the tangible impact of data-driven agricultural management.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">IoT Systems for Controlled Fermentation</div>
+    <p>Fabián has also built a suite of IoT-enabled control systems — each combining custom hardware and web applications — for monitoring and optimizing key agricultural processes including controlled fermentation, drying beds, greenhouse environments, and hydroponic systems. At Tunjo, his IoT developments form the technological backbone of the company's bioreactor systems for controlled coffee fermentation, enabling precise real-time monitoring of temperature, pH, gas composition, and other key indicators. These systems have supported multiple successful field implementations and are designed to scale across diverse farm environments.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Technical Approach</div>
+    <p>Fabián's strength lies in bridging hardware and software into cohesive, robust systems that operate reliably under real-world agricultural conditions. His approach combines engineering rigor with practical deployment considerations, ensuring that complex technologies remain accessible and functional for producers in rural settings.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Education &amp; Credentials</div>
+    <div class="credentials">
+      <span class="credential-tag">B.Sc. Electronics Engineering</span>
+      <span class="credential-tag">IoT &amp; Embedded Systems Design</span>
+      <span class="credential-tag">Blockchain-Based Traceability Systems</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function showProfile(id) {
+  document.querySelectorAll('.profile').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('profile-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function loadPhoto(id, input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const slot = document.getElementById('photo-' + id);
+    slot.querySelectorAll('.photo-icon, .photo-hint').forEach(el => el.style.display = 'none');
+    let img = slot.querySelector('img');
+    if (!img) { img = document.createElement('img'); slot.appendChild(img); }
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function printProfile(id) {
+  document.querySelectorAll('.profile').forEach(p => p.classList.remove('print-target'));
+  document.getElementById('profile-' + id).classList.add('print-target');
+  window.print();
+  setTimeout(() => document.getElementById('profile-' + id).classList.remove('print-target'), 1000);
+}
+</script>
+</body>
+</html>
