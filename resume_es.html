@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Chacon – Hoja de Vida</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10.5pt; color: #1a1a1a; background: #fff; line-height: 1.45; }
+  .page { max-width: 780px; margin: 0 auto; padding: 36px 44px; }
+  h1 { font-size: 22pt; font-weight: 700; color: #0F2D57; letter-spacing: -0.3px; }
+  .tagline { font-size: 10.5pt; color: #1B5FA8; font-weight: 600; margin: 2px 0 6px; }
+  .contact { font-size: 9.5pt; color: #444; display: flex; flex-wrap: wrap; gap: 0 16px; }
+  hr.thin { border: none; border-top: 1.5px solid #0F2D57; margin: 10px 0 8px; }
+  hr.light { border: none; border-top: 0.5px solid #ccc; margin: 7px 0; }
+  h2 { font-size: 10pt; font-weight: 700; color: #0F2D57; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .summary { font-size: 10.5pt; color: #222; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+  .skill-row { font-size: 9.8pt; }
+  .skill-label { font-weight: 600; color: #0F2D57; }
+  .job { margin-bottom: 10px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 10.5pt; color: #1a1a1a; }
+  .job-company { font-weight: 600; font-size: 10pt; color: #1B5FA8; }
+  .job-meta { font-size: 9pt; color: #666; text-align: right; white-space: nowrap; }
+  ul.bullets { margin: 4px 0 0 14px; }
+  ul.bullets li { font-size: 10pt; color: #222; margin-bottom: 2.5px; }
+  .edu-row { display: flex; justify-content: space-between; }
+  .edu-school { font-weight: 700; font-size: 10pt; }
+  .edu-degree { font-size: 9.8pt; color: #444; }
+  .edu-date { font-size: 9pt; color: #666; white-space: nowrap; }
+  .cert-row { font-size: 10pt; }
+  .cert-name { font-weight: 600; }
+  .section { margin-bottom: 12px; }
+  .highlight-box {
+    background: #EAF2FF;
+    border-left: 3px solid #1B5FA8;
+    padding: 6px 10px;
+    margin: 6px 0 4px;
+    font-size: 9.8pt;
+    color: #0F2D57;
+    border-radius: 0 4px 4px 0;
+  }
+  @media print {
+    body { font-size: 10pt; }
+    .page { padding: 20px 28px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Encabezado -->
+  <h1>Eduardo Chacon</h1>
+  <div class="tagline">Ingeniero Senior Azure Databricks &nbsp;|&nbsp; Big Data &amp; Ingeniería de Datos en la Nube</div>
+  <div class="contact">
+    <span>Bogotá, Colombia</span>
+    <span>LinkedIn: linkedin.com/in/ed-chacon</span>
+    <span>Idiomas: Inglés (Profesional Completo) · Español (Nativo)</span>
+  </div>
+  <hr class="thin">
+
+  <!-- Resumen -->
+  <div class="section">
+    <h2>Perfil Profesional</h2>
+    <p class="summary">Ingeniero de Datos Senior con más de 11 años de experiencia práctica diseñando, desarrollando e implementando pipelines de datos escalables en la nube, con especialización profunda en <strong>Azure Databricks</strong> y el ecosistema Azure. Experto en <strong>Apache Spark / PySpark</strong>, Delta Lake, arquitecturas Lakehouse, <strong>DBT</strong>, Azure Data Factory y modelado de datos con SQL. Historial comprobado en la entrega de pipelines ETL productivos, frameworks de calidad de datos y bodegas de datos listas para OLAP. Reconocido por su proactividad, alta autonomía y capacidad para traducir requerimientos complejos en productos de datos de alto impacto. Certificado en <strong>Data Analysis with Databricks</strong> (2024).</p>
+  </div>
+
+  <!-- Habilidades Técnicas -->
+  <div class="section">
+    <h2>Habilidades Técnicas Principales</h2>
+    <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">Nube / Lakehouse:</span> Azure Databricks, Azure Data Lake, Delta Lake, Azure SQL, Elastic Pools, Azure Data Factory</div>
+      <div class="skill-row"><span class="skill-label">Big Data:</span> Apache Spark, PySpark, SparkSQL, SSIS, ODI</div>
+      <div class="skill-row"><span class="skill-label">Transformación de Datos:</span> DBT, SQL, PL/SQL, T-SQL, Python</div>
+      <div class="skill-row"><span class="skill-label">Calidad y Modelado:</span> Delta Lake ACID, modelado OLAP, Gobernanza de Datos, diseño de esquemas</div>
+      <div class="skill-row"><span class="skill-label">Orquestación:</span> Apache Airflow, Azure Data Factory, orquestación con Python</div>
+      <div class="skill-row"><span class="skill-label">BI y Analítica:</span> Power BI (Reportes, Dashboards, Paginados, Apps), Tableau</div>
+      <div class="skill-row"><span class="skill-label">Adicional:</span> R, web scraping, Azure SQL Elastic Pools, Microsoft SQL Server</div>
+      <div class="skill-row"><span class="skill-label">Habilidades Blandas:</span> Liderazgo técnico, comunicación con stakeholders, coordinación de equipos</div>
+    </div>
+  </div>
+
+  <!-- Experiencia -->
+  <div class="section">
+    <h2>Experiencia Profesional</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Ingeniero Senior de Big Data – Azure Databricks</div>
+          <div class="job-company">SoftServe Business Systems &nbsp;·&nbsp; Tiempo Completo · Remoto</div>
+        </div>
+        <div class="job-meta">Sep 2024 – Presente<br>Bogotá, Colombia</div>
+      </div>
+      <div class="highlight-box">
+        🔷 Rol actual con enfoque 100% en Azure Databricks · PySpark · Delta Lake · Arquitectura Lakehouse
+      </div>
+      <ul class="bullets">
+        <li>Diseño e implementación de arquitecturas <strong>end-to-end en Azure Databricks</strong> para el procesamiento de datasets a gran escala, aplicando patrones de arquitectura Medallion (Bronze / Silver / Gold) con <strong>PySpark y SparkSQL</strong>.</li>
+        <li>Definición e implementación de estrategias de modelado OLAP en las capas de almacenamiento, exploración y consumo, habilitando analítica de autoservicio sobre <strong>Tableau</strong>.</li>
+        <li>Desarrollo de frameworks robustos de <strong>evaluación de calidad de datos</strong> con PySpark: validación de reglas de negocio, monitoreo de SLA y alertas automatizadas en pipelines productivos.</li>
+        <li>Liderazgo técnico en optimizaciones avanzadas de <strong>Delta Lake</strong>: Z-ordering, vacuuming, compaction y ajuste de particionamiento para maximizar el rendimiento de consultas a escala.</li>
+        <li>Construcción de pipelines de transformación complejos con <strong>DBT sobre Databricks</strong>, aplicando buenas prácticas de versionamiento, pruebas automatizadas y documentación de modelos.</li>
+        <li>Colaboración directa con equipos de ingeniería y analítica para traducir requerimientos de negocio en soluciones de datos escalables y mantenibles.</li>
+        <li>Reconocido de manera reiterada por entrega proactiva y resultados de alta calidad en productos de datos de alta complejidad.</li>
+        <li><em>Stack principal: Azure Databricks · Apache Spark · PySpark · SparkSQL · Delta Lake · DBT · Tableau · Azure Data Lake</em></li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Ingeniero de Datos Senior</div>
+          <div class="job-company">Tunjo Solutions &nbsp;·&nbsp; Tiempo Completo · Remoto</div>
+        </div>
+        <div class="job-meta">Dic 2021 – Ene 2025 (3 años 2 meses)<br>Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Diseño, desarrollo e implementación de reportes, dashboards, reportes paginados y apps embebidas en <strong>Power BI</strong> para múltiples clientes; presentación de resultados a stakeholders senior.</li>
+        <li>Orquestación y desarrollo de pipelines en <strong>Azure Data Factory</strong> integrados con <strong>Azure SQL</strong> para automatizar flujos de ingesta y transformación de datos.</li>
+        <li>Extracción de datos no estructurados mediante <strong>web scraping en Python</strong> para procesos de ingesta desde fuentes externas.</li>
+        <li>Liderazgo técnico y coordinación de equipo de contratistas, incluyendo revisión de código y orientación de desarrollo.</li>
+        <li><em>Stack: Azure Data Factory · Azure SQL · Power BI · Python · Carga de Datos</em></li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Líder de Tribu de Datos</div>
+          <div class="job-company">Mibanco, banco de la Microempresa &nbsp;·&nbsp; Tiempo Completo · Híbrido</div>
+        </div>
+        <div class="job-meta">Dic 2022 – Abr 2023 (5 meses)<br>Bogotá, Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Liderazgo de un equipo de 12 desarrolladores en la migración de bases de datos Sandbox on-premises a bodegas de exploración estructuradas en <strong>Azure Cloud</strong>, alineadas a la estrategia de nube corporativa.</li>
+        <li>Participación técnica directa con <strong>Python, PL/SQL y Power BI</strong>; pipelines orquestados a través de ODI.</li>
+      </ul>
+    </div>
+    <hr class="light">
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Gerente de Ingeniería de Datos</div>
+          <div class="job-company">Teleperformance &nbsp;·&nbsp; Tiempo Completo · Remoto</div>
+        </div>
+        <div class="job-meta">Feb 2020 – Dic 2021 (1 año 11 meses)<br>Medellín, Colombia</div>
+      </div>
+      <ul class="bullets">
+        <li>Diseño e implementación de una arquitectura de <strong>Data Warehouse on-premises sobre SQL Server</strong>, con pipelines orquestados en Python y T-SQL; ingesta de datos a través de SSIS.</li>
+        <li>Consolidación del reporte organizacional mediante una arquitectura BI on-premises extendida a <strong>Azure SQL Elastic Pools</strong>; creación y mantenimiento de más de 100 dashboards en Power BI con Gobernanza de Datos.</li>
+        <li>Web scraping y extracción de datos con <strong>Python y R</strong>; liderazgo técnico transversal en equipos de ingeniería.</li>
+        <li><em>Stack: SQL Server · Power BI · Python · R · Azure SQL · SSIS · Gobernanza de Datos</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Educación -->
+  <div class="section">
+    <h2>Educación</h2>
+    <div class="edu-row" style="margin-bottom:5px;">
+      <div>
+        <div class="edu-school">Duke University – Pratt School of Engineering</div>
+        <div class="edu-degree">Especialización en Herramientas de Analítica para Negocios y Procesamiento de Datos</div>
+      </div>
+      <div class="edu-date">Mar 2018 – Ago 2019</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">Ejército Colombiano, Escuela de Logística</div>
+        <div class="edu-degree">Pregrado – Logística, Materiales y Gestión de Cadena de Suministro (Profesional en Gestión Logística)</div>
+      </div>
+      <div class="edu-date">Jul 2007 – Oct 2013</div>
+    </div>
+  </div>
+
+  <!-- Certificaciones -->
+  <div class="section">
+    <h2>Licencias y Certificaciones</h2>
+    <div class="cert-row"><span class="cert-name">Data Analysis with Databricks</span> &nbsp;–&nbsp; Databricks &nbsp;·&nbsp; Emitida en marzo de 2024</div>
+  </div>
+
+</div>
+</body>
+</html>
