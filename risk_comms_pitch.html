@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change Risk Communication — Buy-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* XtendOps brand tokens (from site stylesheet) */
+    --xo-blue:#447fff;
+    --xo-blue-deep:#2463eb;
+    --xo-ink:#020202;
+    --xo-heading:#222222;
+    --xo-body:#4e5564;
+    --xo-bg:#fafbff;
+    --xo-bg-tint:#eaf1fe;
+    --xo-blue-10:#e7efff;
+    --xo-blue-20:#b8d0ff;
+    --xo-white:#ffffff;
+    --xo-dark:#1c1b1a;
+    --xo-border:#02020226;      /* neutral-darkest-15 */
+    --xo-line:#e6e6ea;
+    --radius-lg:16px;
+    --radius-md:12px;
+    --radius-sm:10px;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html,body{font-family:var(--font);color:var(--xo-heading);background:#c9cdd6;}
+
+  /* ---- Slide frame: A4 landscape ---- */
+  .slide{
+    position:relative;
+    width:297mm;height:210mm;
+    background:var(--xo-bg);
+    margin:10mm auto;
+    padding:16mm 18mm 14mm;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+
+  /* soft brand glow, echoing site hero */
+  .slide::before{
+    content:"";position:absolute;width:360px;height:360px;border-radius:50%;
+    background:var(--xo-blue-20);opacity:.35;filter:blur(90px);
+    top:-120px;right:-80px;pointer-events:none;
+  }
+  .slide::after{
+    content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+    background:var(--xo-bg-tint);opacity:.7;filter:blur(80px);
+    bottom:-140px;left:-60px;pointer-events:none;
+  }
+  .slide > *{position:relative;z-index:1;}
+
+  /* ---- Top bar ---- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:9mm;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand img.logo{height:30px;width:auto;display:block;}
+  .slide-tag{
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--xo-blue-deep);
+  }
+
+  /* ---- Eyebrow + headline ---- */
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--xo-blue-deep);margin-bottom:12px;
+  }
+  h1.headline{
+    color:var(--xo-heading);font-weight:700;line-height:1.12;letter-spacing:-.01em;
+    font-size:33px;max-width:26ch;
+  }
+  h1.headline .accent{color:var(--xo-blue-deep);}
+  .subline{
+    color:var(--xo-body);font-size:15px;line-height:1.5;margin-top:12px;max-width:70ch;font-weight:400;
+  }
+
+  /* ---- Two-column body ---- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14mm;margin-top:11mm;flex:1;}
+  .col-label{
+    display:flex;align-items:center;gap:9px;margin-bottom:14px;
+  }
+  .col-label .pip{
+    font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:#fff;background:var(--xo-blue);border-radius:999px;padding:4px 11px;
+  }
+  .col-label .pip.alt{background:var(--xo-ink);}
+  .col-label h2{font-size:14px;font-weight:700;color:var(--xo-heading);letter-spacing:.01em;}
+
+  ul.points{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  ul.points li{
+    position:relative;padding-left:24px;color:var(--xo-body);
+    font-size:13.5px;line-height:1.45;font-weight:400;
+  }
+  ul.points li::before{
+    content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:3px;
+    background:var(--xo-blue);
+  }
+  ul.points li b{color:var(--xo-heading);font-weight:600;}
+
+  /* numbered asks (slide 2) */
+  ol.asks{list-style:none;display:flex;flex-direction:column;gap:13px;counter-reset:ask;}
+  ol.asks li{
+    position:relative;padding-left:44px;min-height:30px;
+    color:var(--xo-body);font-size:13.5px;line-height:1.45;padding-top:2px;
+  }
+  ol.asks li::before{
+    counter-increment:ask;content:counter(ask);
+    position:absolute;left:0;top:0;width:30px;height:30px;border-radius:999px;
+    background:var(--xo-blue-10);color:var(--xo-blue-deep);
+    font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.asks li b{color:var(--xo-heading);font-weight:700;display:block;margin-bottom:1px;font-size:14px;}
+
+  /* payoff card */
+  .payoff{
+    background:var(--xo-white);border:1px solid var(--xo-line);border-radius:var(--radius-lg);
+    padding:20px 22px;
+  }
+  .payoff .ph{
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--xo-blue-deep);margin-bottom:13px;
+  }
+  .payoff ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .payoff li{position:relative;padding-left:24px;color:var(--xo-body);font-size:13px;line-height:1.4;}
+  .payoff li::before{
+    content:"✓";position:absolute;left:0;top:0;color:var(--xo-blue);font-weight:800;font-size:13px;
+  }
+
+  /* ---- Say / speaker strip ---- */
+  .say{
+    margin-top:11mm;border-left:3px solid var(--xo-blue);
+    background:var(--xo-bg-tint);border-radius:0 var(--radius-md) var(--radius-md) 0;
+    padding:14px 18px;
+  }
+  .say .lbl{
+    font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--xo-blue-deep);margin-bottom:5px;
+  }
+  .say p{color:var(--xo-heading);font-size:12.5px;line-height:1.5;font-weight:400;}
+
+  /* ---- Footer ---- */
+  .foot{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:auto;padding-top:9mm;
+    font-size:10.5px;color:var(--xo-body);
+  }
+  .foot .dash{color:var(--xo-blue);font-weight:700;}
+
+  /* closing line on slide 2 */
+  .closer{
+    margin-top:9mm;text-align:center;
+    font-size:16px;font-weight:700;color:var(--xo-heading);
+  }
+  .closer .accent{color:var(--xo-blue-deep);}
+
+  /* ---- Print ---- */
+  @page{size:A4 landscape;margin:0;}
+  @media print{
+    html,body{background:#fff;}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page;}
+    .slide:last-child{page-break-after:auto;break-after:auto;}
+    .noprint{display:none!important;}
+  }
+
+  /* subtle on-screen shadow only */
+  @media screen{
+    .slide{box-shadow:0 24px 48px -12px rgba(2,2,2,.22);border-radius:6px;}
+    .hint{max-width:297mm;margin:14px auto 0;color:#3c4150;font-size:13px;text-align:center;font-family:var(--font);}
+    .hint b{color:#1c1b1a;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= SLIDE 1 ================= -->
+<section class="slide">
+  <div class="topbar">
+    <div class="brand">
+      <img class="logo" src="https://cdn.prod.website-files.com/692e15276f4a2c6603fd82db/69540077387a4559cec99ba6_xoai%20logo-p-500.png" alt="XtendOps">
+    </div>
+    <div class="slide-tag">Analytics &amp; WFM · Change Risk</div>
+  </div>
+
+  <div>
+    <div class="eyebrow">The problem</div>
+    <h1 class="headline">
+      A tool, metric, or process changes quietly upstream — and the numbers you decide on
+      <span class="accent">are already wrong before anyone raises a hand.</span>
+    </h1>
+    <p class="subline">
+      We change tools, metric definitions, processes, and data sources constantly. Most are fine.
+      But some silently break trend comparability, distort a forecast, or drive a wrong staffing / SLA call —
+      and today there is no standard way for the team to flag that risk before it reaches you.
+    </p>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="col-label"><span class="pip">Why now</span><h2>What it&rsquo;s costing us</h2></div>
+      <ul class="points">
+        <li>Risks surface <b>late or stay silent</b> — not negligence, just no channel to raise them.</li>
+        <li>Flagging upward can feel like pushback, so the quiet &ldquo;no&rdquo; <b>never gets said.</b></li>
+        <li>You inherit them as <b>surprises to firefight</b>, not decisions you could have made.</li>
+        <li>Once a KPI&rsquo;s integrity breaks, <b>trust in every number</b> takes the hit.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-label"><span class="pip alt">The change</span><h2>A simple, standard one-pager</h2></div>
+      <ul class="points">
+        <li>Attached to <b>every significant change</b> — mandatory, lightweight, minutes to complete.</li>
+        <li>Three fixed questions: <b>what must go right · what could go wrong</b> (probability + impact) <b>· what we recommend.</b></li>
+        <li><b>No new tool to learn</b> — one template anyone on the team can use.</li>
+        <li>Lands on your desk as a <b>30-second, comparable read.</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Change Risk Communication &mdash; a proposal for Operations &amp; CX leadership</span>
+    <span><span class="dash">01</span> / 02 &nbsp;·&nbsp; Why &amp; What</span>
+  </div>
+</section>
+
+<!-- ================= SLIDE 2 ================= -->
+<section class="slide">
+  <div class="topbar">
+    <div class="brand">
+      <img class="logo" src="https://cdn.prod.website-files.com/692e15276f4a2c6603fd82db/69540077387a4559cec99ba6_xoai%20logo-p-500.png" alt="XtendOps">
+    </div>
+    <div class="slide-tag">Analytics &amp; WFM · Change Risk</div>
+  </div>
+
+  <div>
+    <div class="eyebrow">Our ask &mdash; the CTA</div>
+    <h1 class="headline">
+      Protect the messenger, <span class="accent">reward the trust.</span>
+    </h1>
+    <p class="subline">
+      The team can produce the assessments — that part we own. The loop only closes with you,
+      because the point is getting a risk in front of someone who can act on it. Here is the part that&rsquo;s yours.
+    </p>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="col-label"><span class="pip">Your role</span><h2>Three things we need from you</h2></div>
+      <ol class="asks">
+        <li><b>Receive it as routine, not complaint.</b> A flagged risk means the process is working — it&rsquo;s professional practice, not resistance.</li>
+        <li><b>Close the loop.</b> Each note ends with a call you own — proceed / mitigate / hold. The timely decision is what creates the value.</li>
+        <li><b>Protect the early messenger.</b> How you react to the first uncomfortable early warning decides whether people keep raising them.</li>
+      </ol>
+    </div>
+    <div class="payoff">
+      <div class="ph">What you get back</div>
+      <ul>
+        <li>Fewer operational surprises and far less firefighting.</li>
+        <li>Defensible KPI and forecast integrity you can stand behind.</li>
+        <li>A clear record of what was known, and what was decided, when.</li>
+        <li>A team that surfaces risk early instead of absorbing it silently.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Change Risk Communication &mdash; a proposal for Operations &amp; CX leadership</span>
+    <span><span class="dash">02</span> / 02 &nbsp;·&nbsp; What we need from you</span>
+  </div>
+</section>
+
+</body>
+</html>
